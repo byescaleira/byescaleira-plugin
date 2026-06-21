@@ -6,19 +6,5 @@
   "author": {
     "name": "Rafael Escaleira",
     "email": "rafael@byescaleira.com"
-  },
-  "skills": [
-    "./"
-  ],
-  "agents": [
-    "agents/byescaleira.md"
-  ],
-  "mcpServers": {
-    "byescaleira": {
-      "command": "python3",
-      "args": [
-        "${CLAUDE_PLUGIN_ROOT}/scripts/byescaleira-mcp.py"
-      ]
-    }
   }
 }
