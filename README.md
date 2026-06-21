@@ -105,6 +105,7 @@ This repository is also an example of the byescaleira skeleton:
 byescaleira-plugin/
 ├── .claude-plugin/       # Claude Code native plugin manifest
 │   └── plugin.json
+├── .mcp.json             # MCP server configuration
 ├── SKILL.md              # Skill loaded by Claude Code
 ├── agents/               # Specialist agents
 │   └── byescaleira.md
