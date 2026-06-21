@@ -87,15 +87,17 @@ A legacy install path is still available via `scripts/install.sh` for users who 
 
 ## Current state
 
-- `SKILL.md` is the primary entry point for the native plugin.
-- `agents/byescaleira.md` provides a specialist agent.
-- `.claude-plugin/plugin.json` declares the plugin manifest.
+- `SKILL.md` is the primary entry point for the native plugin and the skills directory.
+- `agents/byescaleira.md` provides a specialist agent (legacy path).
+- `.claude-plugin/plugin.json` declares the native plugin manifest.
+- `.claude-plugin/marketplace.json` is ready for the future Claude Code marketplace.
+- GitHub Releases ship a `.zip` artifact for marketplace installs when supported.
 - Legacy `.claude/` files remain for backward compatibility.
 - `DESIGN.md` contains the visual and brand definitions.
 
 ## Future Evolution
 
-- [ ] Test Claude Code native plugin install via marketplace zip
-- [ ] Document marketplace install flow in README
+- Switch recommended install to `claude plugin install byescaleira` once Anthropic supports external marketplaces in Claude Code.
+- Strengthen CI with markdown lint, shellcheck, and frontmatter validation.
 - [ ] Update ARCHITECTURE.md with packaging details
 - [ ] Create release v0.2.1 with marketplace.json pointing to zip

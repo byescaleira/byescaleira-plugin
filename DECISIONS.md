@@ -2,7 +2,9 @@
 
 | Date | Decision | Context | Consequences | Status |
 |---|---|---|---|---|
-| 2026-06-21 | Repository name: `byescaleira-plugin` | Clear, identifies as Claude Code plugin | Easy to find and share | Active |
+| 2026-06-21 | Dual-format plugin: native `.claude-plugin/` + legacy `.claude/` | Maximize install options while Claude Code marketplace matures | Native plugin ready for marketplace; skills-directory works today | active |
+| 2026-06-21 | Marketplace distribution via GitHub Releases `.zip` | Claude Code 2.1.181 does not accept git-source marketplace plugins | Future-proof release artifact; skills-directory is the working path today | active |
+| 2026-06-21 | Skills directory as recommended install path | Only marketplace-agnostic install method that works on Claude Code 2.1.181 | Users can install now via `~/.claude/skills/byescaleira/` | active |
 | 2026-06-21 | Plugin as set of Claude Code extension files | Native integration, no extra tooling | Limited to Claude Code users | Active |
 | 2026-06-21 | English for all plugin documentation | Aligns with professional identity | Consistent with public projects | Active |
 | 2026-06-21 | MIT license | Personal/open-source projects | Simple reuse by others | Active |
