@@ -13,20 +13,23 @@ It helps Rafael Escaleira (`byescaleira`) start, organize, build, and ship perso
 
 ## How to install
 
-1. Clone this repository:
+### Option 1: install script (recommended)
+
+```bash
+git clone git@github.com:byescaleira/byescaleira-plugin.git
+./byescaleira-plugin/scripts/install.sh
+```
+
+The script backs up your existing `~/.claude/` and copies the plugin files in place.
+
+### Option 2: manual copy
 
 ```bash
 git clone git@github.com:byescaleira/byescaleira-plugin.git ~/.claude/byescaleira-plugin
-```
-
-2. Copy the plugin into Claude Code's global config:
-
-```bash
-# Backup existing ~/.claude if you already have one
 cp -R ~/.claude/byescaleira-plugin/.claude/* ~/.claude/
 ```
 
-3. Restart Claude Code or open a new session.
+After installing, restart Claude Code or open a new session.
 
 ## What gets installed
 
@@ -69,6 +72,8 @@ This repository is also an example of the byescaleira skeleton:
 byescaleira-plugin/
 ├── .claude/              # Claude Code plugin files
 ├── .github/              # GitHub templates and workflows
+├── scripts/              # Helper scripts
+│   └── install.sh        # Local installation script
 ├── README.md             # This file
 ├── PROPOSAL.md           # Why this plugin exists
 ├── ROADMAP.md            # What comes next

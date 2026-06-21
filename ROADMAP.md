@@ -4,24 +4,24 @@
 
 ## Now (current cycle)
 
-- [x] Create GitHub repository `byescaleira-plugin`
-- [ ] Build initial `.claude/CLAUDE.md`
-- [ ] Build initial slash commands (`init`, `proposal`, `roadmap`, `ship`)
-- [ ] Build initial `@byescaleira` agent
-- [ ] Push v0.1.0 — Dust
+- [x] v0.1.0 — Dust shipped
+- [ ] Sync `ROADMAP.md` and mark shipped items as done
+- [ ] Make slash commands self-contained with embedded templates
+- [ ] Add `.github/workflows/release.yml`
+- [ ] Create safe `scripts/install.sh` for local installation
+- [ ] Update `README.md` to reference the install script
 
 ## Next (next cycle)
 
 - [ ] Add `.claude/rules/` modular rules split from `CLAUDE.md`
 - [ ] Add `.claude/settings.json` with hooks and permissions
-- [ ] Create installation script
-- [ ] Improve slash commands with file generation logic
+- [ ] Add design system definitions file
+- [ ] Improve `@byescaleira` agent with embedded templates
 
 ## Later
 
 - [ ] Add MCP server for project scaffolding
 - [ ] Add GitHub repository template
-- [ ] Add design system definitions file
 - [ ] Add sample project using the plugin
 
 ## Maybe

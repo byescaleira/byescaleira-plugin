@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify plugin structure
+        run: |
+          test -f README.md
+          test -f .claude/CLAUDE.md
+          test -d .claude/commands
+          test -d .claude/agents
+          test -f .claude/commands/byescaleira-init.md
+          test -f .claude/commands/byescaleira-proposal.md
+          test -f .claude/commands/byescaleira-roadmap.md
+          test -f .claude/commands/byescaleira-ship.md
+          test -f .claude/agents/byescaleira.md
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          body: |
+            See [CHANGELOG.md](./CHANGELOG.md) for full details.
