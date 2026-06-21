@@ -24,7 +24,7 @@ It is intentionally lightweight: no compiled code, no external dependencies, onl
 ```
 byescaleira-plugin/
 ├── .claude/
-│   ├── CLAUDE.md              # Global memory and rules
+│   ├── CLAUDE.md              # Global memory entry point
 │   ├── commands/              # Slash commands
 │   │   ├── byescaleira-init.md
 │   │   ├── byescaleira-proposal.md
@@ -32,20 +32,32 @@ byescaleira-plugin/
 │   │   └── byescaleira-ship.md
 │   ├── agents/                # Specialist agents
 │   │   └── byescaleira.md
-│   └── settings.json          # Hooks and permissions (future)
+│   ├── rules/                 # Modular operating system rules
+│   │   ├── identity.md
+│   │   ├── voice.md
+│   │   ├── principles.md
+│   │   ├── codenames.md
+│   │   ├── skeleton.md
+│   │   ├── operating.md
+│   │   └── visual.md
+│   └── settings.json          # Hooks and permissions
 ├── .github/                   # Repository governance
 │   ├── workflows/
-│   │   └── ci.yml
+│   │   ├── ci.yml
+│   │   └── release.yml
 │   ├── pull_request_template.md
 │   └── issue_templates/
 │       ├── bug_report.md
 │       └── feature_request.md
+├── scripts/                   # Helper scripts
+│   └── install.sh
 ├── README.md
 ├── PROPOSAL.md
 ├── ROADMAP.md
 ├── CHANGELOG.md
 ├── ARCHITECTURE.md
 ├── DECISIONS.md
+├── DESIGN.md                  # Visual and brand definitions
 ├── LICENSE
 └── .gitignore
 ```
@@ -60,11 +72,16 @@ byescaleira-plugin/
 ## Installation Flow
 
 1. User clones the repository.
-2. User copies `.claude/` contents into their own `~/.claude/` directory.
-3. Claude Code loads `CLAUDE.md`, commands, and agents on next startup.
+2. User runs `scripts/install.sh`, which backs up existing `~/.claude/` and copies the plugin files.
+3. Claude Code loads `CLAUDE.md`, rules, commands, agents, and settings on next startup.
+
+## Current state
+
+- `CLAUDE.md` is now an entry point; rules live in `.claude/rules/`.
+- `settings.json` configures default permissions and a hook to chmod new shell scripts.
+- `DESIGN.md` contains the visual and brand definitions.
 
 ## Future Evolution
 
-- Split `CLAUDE.md` into `.claude/rules/` when it grows beyond ~200 lines.
-- Add `settings.json` for hooks and default permissions.
 - Consider an MCP server for advanced scaffolding.
+- Strengthen CI with markdown lint, shellcheck, and frontmatter validation.

@@ -18,8 +18,8 @@
 ## Next (next cycle)
 
 - [ ] Split `CLAUDE.md` into `.claude/rules/` modular rules
-- [ ] Add `.claude/settings.json` with hooks and permissions
-- [ ] Add design system definitions file
+- [x] Add `.claude/settings.json` with hooks and permissions
+- [x] Add design system definitions file (`DESIGN.md`)
 - [ ] Improve `@byescaleira` agent with embedded templates
 - [ ] Strengthen CI validation (frontmatter, shellcheck, markdown lint)
 

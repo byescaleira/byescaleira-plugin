@@ -71,6 +71,11 @@ This repository is also an example of the byescaleira skeleton:
 ```
 byescaleira-plugin/
 ├── .claude/              # Claude Code plugin files
+│   ├── CLAUDE.md         # Global memory entry point
+│   ├── commands/         # Slash commands
+│   ├── agents/           # Specialist agents
+│   ├── rules/            # Modular operating system rules
+│   └── settings.json     # Hooks and permissions
 ├── .github/              # GitHub templates and workflows
 ├── scripts/              # Helper scripts
 │   └── install.sh        # Local installation script
@@ -80,6 +85,7 @@ byescaleira-plugin/
 ├── CHANGELOG.md          # Release history
 ├── ARCHITECTURE.md       # How the plugin is structured
 ├── DECISIONS.md          # Important technical decisions
+├── DESIGN.md             # Visual and brand definitions
 ├── LICENSE               # MIT
 └── .gitignore            # Ignored files
 ```

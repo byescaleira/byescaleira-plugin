@@ -1,0 +1,44 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write(*.md)",
+      "Bash(git *)",
+      "Bash(mkdir *)"
+    ],
+    "ask": [
+      "Write(*.swift)",
+      "Write(*.json)",
+      "Write(*.yml)",
+      "Write(*.yaml)",
+      "Write(*.sh)",
+      "Bash(rm *)",
+      "Bash(cp *)",
+      "Bash(curl *)"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Read(.env.local)",
+      "Read(*.key)",
+      "Read(*.pem)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write(*.sh)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "chmod +x $CLAUDE_FILE_PATHS"
+          }
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "agent": "byescaleira",
+    "auto-memory": false,
+    "update-notifications": false
+  }
+}
