@@ -5,20 +5,23 @@
 ## Now (current cycle)
 
 - [x] v0.1.0 — Dust shipped
-- [ ] Sync `ROADMAP.md` and mark shipped items as done
-- [ ] Make slash commands self-contained with embedded templates
-- [ ] Add `.github/workflows/release.yml`
-- [ ] Create safe `scripts/install.sh` for local installation
-- [ ] Update `README.md` to reference the install script
+- [x] Sync `ROADMAP.md` and mark shipped items as done
+- [x] Make slash commands self-contained with embedded templates
+- [x] Add `.github/workflows/release.yml`
+- [x] Create safe `scripts/install.sh` for local installation
+- [x] Update `README.md` to reference the install script
+- [ ] Fix small issues from Claude Code review:
+  - [ ] `install.sh` backup message
+  - [ ] Add placeholder scripts in `/byescaleira-init` template
+  - [ ] Clarify user must run `git tag` in `/byescaleira-ship`
 
 ## Next (next cycle)
 
-- [ ] Add `.claude/rules/` modular rules split from `CLAUDE.md`
+- [ ] Split `CLAUDE.md` into `.claude/rules/` modular rules
 - [ ] Add `.claude/settings.json` with hooks and permissions
 - [ ] Add design system definitions file
 - [ ] Improve `@byescaleira` agent with embedded templates
-
-## Later
+- [ ] Strengthen CI validation (frontmatter, shellcheck, markdown lint)
 
 - [ ] Add MCP server for project scaffolding
 - [ ] Add GitHub repository template

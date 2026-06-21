@@ -25,10 +25,14 @@ Prepare a release for the current project.
 - ...
 ```
 
-5. If needed, update `ROADMAP.md` to reflect what was shipped.
-6. Create a git tag: `git tag -a vX.Y.Z -m "Planet"`.
-7. Suggest the release commit message: `chore(release): vX.Y.Z — Planet`.
-8. Remind the user to push the tag and verify CI.
+6. Update `ROADMAP.md` to reflect what was shipped.
+7. Prepare the tag command but do NOT run it automatically:
+   ```bash
+   git tag -a vX.Y.Z -m "Planet"
+   ```
+   Remind the user to review and run it themselves.
+8. Suggest the release commit message: `chore(release): vX.Y.Z — Planet`.
+9. Remind the user to push the tag and verify CI.
 
 ## Output
 

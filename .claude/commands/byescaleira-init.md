@@ -7,7 +7,15 @@ Generate the byescaleira universal repository skeleton in the current directory.
 1. Confirm or ask for the project codename from the byescaleira space dictionary.
    Main projects: Apollo, Artemis, Voyager, Pioneer, Nova, Orion, Kepler, Hubble, Sputnik, Galileo, Osiris, Titan.
 2. If the current directory already contains skeleton files, ask before overwriting.
-3. Create the following structure:
+3. Create the structure described below.
+4. Fill each file using the templates below, replacing `<project>` with the chosen codename and `<description>` with a one-line summary.
+5. Use English for all generated documentation.
+6. Apply the byescaleira voice (direct, personal, no corporate fluff).
+7. Add the README signature at the end of README.md.
+8. Suggest a commit message: `chore: bootstrap <project> repository skeleton`.
+9. Do NOT generate source code yet. Only the definitions layer.
+
+## Structure to create
 
 ```
 ./
@@ -19,6 +27,11 @@ Generate the byescaleira universal repository skeleton in the current directory.
 │   └── issue_templates/
 │       ├── bug_report.md
 │       └── feature_request.md
+├── scripts/
+│   ├── setup.sh      # Optional; create as placeholder
+│   ├── lint.sh       # Optional; create as placeholder
+│   ├── test.sh       # Optional; create as placeholder
+│   └── build.sh      # Optional; create as placeholder
 ├── .gitignore
 ├── LICENSE
 ├── README.md
@@ -28,6 +41,36 @@ Generate the byescaleira universal repository skeleton in the current directory.
 ├── ARCHITECTURE.md
 └── DECISIONS.md
 ```
+
+If the project uses CI scripts, create them as executable placeholders:
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+# setup.sh — install dependencies
+```
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+# lint.sh — run linters
+```
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+# test.sh — run tests
+```
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+# build.sh — build the project
+```
+
+Note: the CI workflow gracefully skips missing scripts (`|| echo "No ... script"`), so placeholders are safe but not strictly required.
+
+## README.md template
 
 4. Fill each file using the templates below, replacing `<project>` with the chosen codename and `<description>` with a one-line summary.
 5. Use English for all generated documentation.
