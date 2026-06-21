@@ -1,6 +1,6 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "byescaleira-marketplace",
+  "name": "marketplace",
   "description": "Personal marketplace for byescaleira plugins and tools.",
   "owner": {
     "name": "Rafael Escaleira",
@@ -9,13 +9,17 @@
   "plugins": [
     {
       "name": "byescaleira",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "description": "Personal operating system plugin for Rafael Escaleira — space-themed codenames, universal repo template, branding, and engineering rituals.",
       "author": {
         "name": "Rafael Escaleira",
         "email": "rafael@byescaleira.com"
       },
-      "pluginUrl": "https://github.com/byescaleira/byescaleira-plugin/releases/download/v0.2.1/byescaleira-plugin-v0.2.1.zip"
+      "source": {
+        "source": "github",
+        "repo": "byescaleira/byescaleira-plugin",
+        "ref": "main"
+      }
     }
   ]
 }
