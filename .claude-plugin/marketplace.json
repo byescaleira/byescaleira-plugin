@@ -16,8 +16,8 @@
         "email": "rafael@byescaleira.com"
       },
       "source": {
-        "source": "github",
-        "repo": "byescaleira/byescaleira-plugin",
+        "source": "url",
+        "url": "https://github.com/byescaleira/byescaleira-plugin.git",
         "ref": "main"
       }
     }
