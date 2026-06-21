@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check markdown file structure
+        run: |
+          test -f README.md
+          test -f PROPOSAL.md
+          test -f ROADMAP.md
+          test -f CHANGELOG.md
+          test -f ARCHITECTURE.md
+          test -f DECISIONS.md
+          test -f .claude/CLAUDE.md
+          test -d .claude/commands
+          test -d .claude/agents
+      - name: Check byescaleira commands
+        run: |
+          test -f .claude/commands/byescaleira-init.md
+          test -f .claude/commands/byescaleira-proposal.md
+          test -f .claude/commands/byescaleira-roadmap.md
+          test -f .claude/commands/byescaleira-ship.md
+          test -f .claude/agents/byescaleira.md
