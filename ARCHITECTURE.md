@@ -95,5 +95,7 @@ A legacy install path is still available via `scripts/install.sh` for users who 
 
 ## Future Evolution
 
-- Publish to a Claude Code marketplace if/when Anthropic opens a public one.
-- Strengthen CI with markdown lint, shellcheck, and frontmatter validation.
+- [ ] Test Claude Code native plugin install via marketplace zip
+- [ ] Document marketplace install flow in README
+- [ ] Update ARCHITECTURE.md with packaging details
+- [ ] Create release v0.2.1 with marketplace.json pointing to zip
