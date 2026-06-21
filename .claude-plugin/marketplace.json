@@ -15,8 +15,7 @@
         "name": "Rafael Escaleira",
         "email": "rafael@byescaleira.com"
       },
-      "source": "git@github.com:byescaleira/byescaleira-plugin.git",
-      "directory": "."
+      "pluginUrl": "https://github.com/byescaleira/byescaleira-plugin/releases/download/v0.2.0/byescaleira-plugin-v0.2.0.zip"
     }
   ]
 }
