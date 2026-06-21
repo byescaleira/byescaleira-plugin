@@ -13,21 +13,24 @@ It helps Rafael Escaleira (`byescaleira`) start, organize, build, and ship perso
 
 ## How to install
 
-### Option 1: Claude Code skills directory (recommended today)
+### Option 1: Claude Code marketplace (recommended)
 
-This is the way Claude Code currently loads user-defined skills. It works on Claude Code 2.1.181 and does not depend on an unreleased marketplace feature.
+```bash
+claude plugin marketplace add byescaleira/byescaleira-plugin
+claude plugin install byescaleira@marketplace
+```
+
+This uses the Claude Code native plugin marketplace. Claude Code loads the plugin from the GitHub repository automatically.
+
+### Option 2: Claude Code skills directory
+
+If the marketplace path is not available on your Claude Code version:
 
 ```bash
 git clone git@github.com:byescaleira/byescaleira-plugin.git ~/.claude/skills/byescaleira
 ```
 
-Claude Code loads skills from `~/.claude/skills/<name>/SKILL.md` automatically on startup. The `byescaleira` skill will be available in every session.
-
-### Option 2: local path install (when supported by your Claude Code version)
-
-```bash
-claude plugin install ./byescaleira-plugin
-```
+Claude Code loads skills from `~/.claude/skills/<name>/SKILL.md` automatically on startup.
 
 ### Option 3: legacy manual install
 
@@ -36,17 +39,6 @@ claude plugin install ./byescaleira-plugin
 ```
 
 This copies `.claude/` files into `~/.claude/`. Use this if you prefer the older extension format.
-
-### Option 4: Claude Code marketplace (future)
-
-The plugin is packaged as a Claude Code native plugin and includes a `.claude-plugin/marketplace.json`. When Anthropic opens plugin marketplaces for external sources, the intended install will be:
-
-```bash
-claude plugin marketplace add byescaleira/byescaleira-plugin
-claude plugin install byescaleira@byescaleira-marketplace
-```
-
-As of Claude Code 2.1.181 this path returns `source type not supported`, so the skills directory method is the recommended working option today.
 
 After installing, restart Claude Code or run `/reload-plugins`.
 

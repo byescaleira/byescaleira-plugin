@@ -72,32 +72,27 @@ byescaleira-plugin/
 
 ## Installation Flow
 
-1. User installs the plugin via Claude Code:
+1. User adds the marketplace and installs the plugin:
    ```bash
-   claude plugin install byescaleira
+   claude plugin marketplace add byescaleira/byescaleira-plugin
+   claude plugin install byescaleira@marketplace
    ```
-   or directly from the repository:
-   ```bash
-   claude plugin install git@github.com:byescaleira/byescaleira-plugin.git
-   ```
-2. Claude Code places the plugin in `~/.claude/skills/byescaleira/`.
-3. On the next session, the skill, agent, and hooks are loaded automatically.
+2. Claude Code clones the repository and places the plugin in `~/.claude/plugins/`.
+3. On the next session, the skill and agent are loaded automatically.
 
-A legacy install path is still available via `scripts/install.sh` for users who prefer the older `~/.claude/` extension format.
+A skills-directory fallback and legacy install script are also documented for users on older Claude Code versions or those who prefer manual installation.
 
 ## Current state
 
 - `SKILL.md` is the primary entry point for the native plugin and the skills directory.
 - `agents/byescaleira.md` provides a specialist agent (legacy path).
 - `.claude-plugin/plugin.json` declares the native plugin manifest.
-- `.claude-plugin/marketplace.json` is ready for the future Claude Code marketplace.
-- GitHub Releases ship a `.zip` artifact for marketplace installs when supported.
+- `.claude-plugin/marketplace.json` enables `claude plugin install byescaleira@marketplace`.
+- GitHub repo is used as the plugin source via HTTPS git URL.
 - Legacy `.claude/` files remain for backward compatibility.
 - `DESIGN.md` contains the visual and brand definitions.
 
 ## Future Evolution
 
-- Switch recommended install to `claude plugin install byescaleira` once Anthropic supports external marketplaces in Claude Code.
+- Switch recommended install to `claude plugin install byescaleira` once Anthropic supports top-level marketplace lookup.
 - Strengthen CI with markdown lint, shellcheck, and frontmatter validation.
-- [ ] Update ARCHITECTURE.md with packaging details
-- [ ] Create release v0.2.1 with marketplace.json pointing to zip
