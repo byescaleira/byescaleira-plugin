@@ -2,9 +2,14 @@
 
 ## Overview
 
-The byescaleira plugin is a set of Claude Code extension files that encode a personal operating system for Rafael Escaleira.
+The byescaleira plugin is now packaged as a Claude Code native plugin. It exposes:
 
-It is intentionally lightweight: no compiled code, no external dependencies, only markdown files and one JSON file. The goal is portability and easy installation.
+- `SKILL.md` — loaded as a skill inside Claude Code sessions.
+- `agents/byescaleira.md` — specialist agent invoked with `@byescaleira`.
+- `.claude-plugin/plugin.json` — manifest declaring the plugin components.
+- Legacy `.claude/` files for users who prefer the older extension format.
+
+It is intentionally lightweight: no compiled code, no external runtime dependencies beyond Claude Code itself. The goal is portability and easy installation.
 
 ## Goals
 
@@ -23,24 +28,22 @@ It is intentionally lightweight: no compiled code, no external dependencies, onl
 
 ```
 byescaleira-plugin/
-├── .claude/
+├── .claude-plugin/
+│   └── plugin.json            # Claude Code native plugin manifest
+├── SKILL.md                   # Skill loaded by Claude Code
+├── agents/
+│   └── byescaleira.md         # Specialist agent
+├── hooks/
+│   └── hooks.json             # Hook definitions
+├── scripts/
+│   ├── install.sh             # Legacy local installer
+│   └── welcome.sh             # Silent SessionStart hook handler
+├── .claude/                   # Legacy extension files
 │   ├── CLAUDE.md              # Global memory entry point
 │   ├── commands/              # Slash commands
-│   │   ├── byescaleira-init.md
-│   │   ├── byescaleira-proposal.md
-│   │   ├── byescaleira-roadmap.md
-│   │   └── byescaleira-ship.md
-│   ├── agents/                # Specialist agents
-│   │   └── byescaleira.md
+│   ├── agents/                # Specialist agents (duplicate for legacy)
 │   ├── rules/                 # Modular operating system rules
-│   │   ├── identity.md
-│   │   ├── voice.md
-│   │   ├── principles.md
-│   │   ├── codenames.md
-│   │   ├── skeleton.md
-│   │   ├── operating.md
-│   │   └── visual.md
-│   └── settings.json          # Hooks and permissions
+│   └── settings.json          # Hooks and permissions (legacy)
 ├── .github/                   # Repository governance
 │   ├── workflows/
 │   │   ├── ci.yml
@@ -49,8 +52,6 @@ byescaleira-plugin/
 │   └── issue_templates/
 │       ├── bug_report.md
 │       └── feature_request.md
-├── scripts/                   # Helper scripts
-│   └── install.sh
 ├── README.md
 ├── PROPOSAL.md
 ├── ROADMAP.md
@@ -71,17 +72,28 @@ byescaleira-plugin/
 
 ## Installation Flow
 
-1. User clones the repository.
-2. User runs `scripts/install.sh`, which backs up existing `~/.claude/` and copies the plugin files.
-3. Claude Code loads `CLAUDE.md`, rules, commands, agents, and settings on next startup.
+1. User installs the plugin via Claude Code:
+   ```bash
+   claude plugin install byescaleira
+   ```
+   or directly from the repository:
+   ```bash
+   claude plugin install git@github.com:byescaleira/byescaleira-plugin.git
+   ```
+2. Claude Code places the plugin in `~/.claude/skills/byescaleira/`.
+3. On the next session, the skill, agent, and hooks are loaded automatically.
+
+A legacy install path is still available via `scripts/install.sh` for users who prefer the older `~/.claude/` extension format.
 
 ## Current state
 
-- `CLAUDE.md` is now an entry point; rules live in `.claude/rules/`.
-- `settings.json` configures default permissions and a hook to chmod new shell scripts.
+- `SKILL.md` is the primary entry point for the native plugin.
+- `agents/byescaleira.md` provides a specialist agent.
+- `.claude-plugin/plugin.json` declares the plugin manifest.
+- Legacy `.claude/` files remain for backward compatibility.
 - `DESIGN.md` contains the visual and brand definitions.
 
 ## Future Evolution
 
-- Consider an MCP server for advanced scaffolding.
+- Publish to a Claude Code marketplace if/when Anthropic opens a public one.
 - Strengthen CI with markdown lint, shellcheck, and frontmatter validation.

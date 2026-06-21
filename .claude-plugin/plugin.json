@@ -1,0 +1,13 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "byescaleira",
+  "version": "0.2.0",
+  "description": "Personal operating system plugin for Rafael Escaleira — space-themed codenames, universal repo template, branding, and engineering rituals.",
+  "author": {
+    "name": "Rafael Escaleira",
+    "email": "rafael@byescaleira.com"
+  },
+  "skills": [
+    "./"
+  ]
+}

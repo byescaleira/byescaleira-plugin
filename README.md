@@ -13,25 +13,49 @@ It helps Rafael Escaleira (`byescaleira`) start, organize, build, and ship perso
 
 ## How to install
 
-### Option 1: install script (recommended)
+### Option 1: Claude Code plugin marketplace (when published)
+
+```bash
+claude plugin install byescaleira
+```
+
+Or install from the GitHub repository directly:
+
+```bash
+claude plugin install git@github.com:byescaleira/byescaleira-plugin.git
+```
+
+### Option 2: local path
 
 ```bash
 git clone git@github.com:byescaleira/byescaleira-plugin.git
+claude plugin install ./byescaleira-plugin
+```
+
+### Option 3: legacy manual install
+
+```bash
 ./byescaleira-plugin/scripts/install.sh
 ```
 
-The script backs up your existing `~/.claude/` and copies the plugin files in place.
+This copies `.claude/` files into `~/.claude/`. Use this if you prefer the older extension format.
 
-### Option 2: manual copy
-
-```bash
-git clone git@github.com:byescaleira/byescaleira-plugin.git ~/.claude/byescaleira-plugin
-cp -R ~/.claude/byescaleira-plugin/.claude/* ~/.claude/
-```
-
-After installing, restart Claude Code or open a new session.
+After installing, restart Claude Code or run `/reload-plugins`.
 
 ## What gets installed
+
+When installed as a Claude Code native plugin:
+
+```
+~/.claude/skills/byescaleira/
+├── .claude-plugin/
+│   └── plugin.json
+├── SKILL.md
+└── agents/
+    └── byescaleira.md
+```
+
+When installed via the legacy script:
 
 ```
 ~/.claude/
@@ -70,24 +94,32 @@ This repository is also an example of the byescaleira skeleton:
 
 ```
 byescaleira-plugin/
-├── .claude/              # Claude Code plugin files
-│   ├── CLAUDE.md         # Global memory entry point
-│   ├── commands/         # Slash commands
-│   ├── agents/           # Specialist agents
-│   ├── rules/            # Modular operating system rules
-│   └── settings.json     # Hooks and permissions
-├── .github/              # GitHub templates and workflows
+├── .claude-plugin/       # Claude Code native plugin manifest
+│   └── plugin.json
+├── SKILL.md              # Skill loaded by Claude Code
+├── agents/               # Specialist agents
+│   └── byescaleira.md
+├── hooks/                # Claude Code hooks
+│   └── hooks.json
 ├── scripts/              # Helper scripts
-│   └── install.sh        # Local installation script
-├── README.md             # This file
-├── PROPOSAL.md           # Why this plugin exists
-├── ROADMAP.md            # What comes next
-├── CHANGELOG.md          # Release history
-├── ARCHITECTURE.md       # How the plugin is structured
-├── DECISIONS.md          # Important technical decisions
-├── DESIGN.md             # Visual and brand definitions
-├── LICENSE               # MIT
-└── .gitignore            # Ignored files
+│   ├── install.sh        # Legacy local installer
+│   └── welcome.sh        # Silent SessionStart hook
+├── .claude/              # Legacy extension files
+│   ├── CLAUDE.md
+│   ├── commands/
+│   ├── agents/
+│   ├── rules/
+│   └── settings.json
+├── .github/              # GitHub templates and workflows
+├── README.md
+├── PROPOSAL.md
+├── ROADMAP.md
+├── CHANGELOG.md
+├── ARCHITECTURE.md
+├── DECISIONS.md
+├── DESIGN.md
+├── LICENSE
+└── .gitignore
 ```
 
 ## Documentation
