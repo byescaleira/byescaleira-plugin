@@ -2,6 +2,10 @@
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "byescaleira-marketplace",
   "description": "Personal marketplace for byescaleira plugins and tools.",
+  "owner": {
+    "name": "Rafael Escaleira",
+    "email": "rafael@byescaleira.com"
+  },
   "plugins": [
     {
       "name": "byescaleira",
