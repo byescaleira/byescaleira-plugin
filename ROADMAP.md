@@ -10,25 +10,23 @@
 - [x] Add `.github/workflows/release.yml`
 - [x] Create safe `scripts/install.sh` for local installation
 - [x] Update `README.md` to reference the install script
-- [ ] Fix small issues from Claude Code review:
-  - [ ] `install.sh` backup message
-  - [ ] Add placeholder scripts in `/byescaleira-init` template
-  - [ ] Clarify user must run `git tag` in `/byescaleira-ship`
+- [x] Split `CLAUDE.md` into `.claude/rules/` modular rules
+- [x] Add `.claude/settings.json` with hooks and permissions
+- [x] Add design system definitions file (`DESIGN.md`)
+- [x] Improve `@byescaleira` agent with embedded templates
+- [x] Package as Claude Code native plugin (`.claude-plugin/plugin.json`)
+- [x] Add marketplace manifest + GitHub Releases `.zip`
+- [x] Document skills-directory install as recommended today
 
 ## Next (next cycle)
 
-- [ ] Split `CLAUDE.md` into `.claude/rules/` modular rules
-- [x] Add `.claude/settings.json` with hooks and permissions
-- [x] Add design system definitions file (`DESIGN.md`)
-- [ ] Improve `@byescaleira` agent with embedded templates
 - [ ] Strengthen CI validation (frontmatter, shellcheck, markdown lint)
-
-- [ ] Add MCP server for project scaffolding
 - [ ] Add GitHub repository template
 - [ ] Add sample project using the plugin
 
 ## Maybe
 
+- [ ] MCP server for project scaffolding
 - [ ] CLI tool `byescaleira` for terminal usage outside Claude Code
 - [ ] Automated weekly review prompt
 - [ ] Integration with Apple Notes / Reminders for project tracking
