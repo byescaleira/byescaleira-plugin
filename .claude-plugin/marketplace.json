@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "byescaleira",
-      "version": "0.2.1",
+      "version": "0.3.0",
       "description": "Personal operating system plugin for Rafael Escaleira — space-themed codenames, universal repo template, branding, and engineering rituals.",
       "author": {
         "name": "Rafael Escaleira",

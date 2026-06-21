@@ -77,12 +77,21 @@ When installed via the legacy script:
 | `/byescaleira-proposal` | Create a `PROPOSAL.md` for a new project. |
 | `/byescaleira-roadmap` | Review or create a `ROADMAP.md`. |
 | `/byescaleira-ship` | Prepare a release: version bump, changelog, and tag. |
+| `@byescaleira` | Invoke the specialist agent for operating-system tasks. |
 
-## Agent
+## MCP tools
 
-Use `@byescaleira` to invoke a specialist agent that knows the full operating system.
+The plugin exposes a lightweight MCP server with these methods:
 
-Example:
+- `list_codenames` — returns projects, modules, releases, branches, environments.
+- `suggest_codename` — returns matching suggestions for a category and prefix.
+- `validate_skeleton` — checks whether a directory has the required skeleton files.
+
+## Contributing
+
+See `.github/pull_request_template.md` and `DECISIONS.md`.
+
+## Agent example
 
 ```
 @byescaleira review this project's roadmap and suggest the next 3 priorities.
@@ -103,7 +112,10 @@ byescaleira-plugin/
 │   └── hooks.json
 ├── scripts/              # Helper scripts
 │   ├── install.sh        # Legacy local installer
-│   └── welcome.sh        # Silent SessionStart hook
+│   ├── welcome.sh        # Silent SessionStart hook
+│   ├── package.sh        # Creates a distribution .zip for releases
+│   ├── validate-frontmatter.py  # CI validation for markdown frontmatter
+│   └── byescaleira-mcp.py       # Lightweight MCP server for codenames and skeleton validation
 ├── .claude/              # Legacy extension files
 │   ├── CLAUDE.md
 │   ├── commands/

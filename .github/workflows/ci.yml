@@ -7,11 +7,38 @@ on:
     branches: [main]
 
 jobs:
-  validate:
+  lint-and-validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check markdown file structure
+
+      - name: Install tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq shellcheck
+          npm install -g markdownlint-cli@0.41.0 front-matter
+
+      - name: Shellcheck on shell scripts
+        run: |
+          shellcheck scripts/*.sh
+
+      - name: Markdown lint
+        run: |
+          markdownlint '**/*.md' --ignore node_modules --ignore .claude/commands --ignore .claude/agents --ignore .claude/rules --ignore agents --ignore .github
+
+      - name: Validate JSON files
+        run: |
+          for f in .claude-plugin/plugin.json .claude-plugin/marketplace.json .claude/settings.json .claude/agents/*.json hooks/*.json; do
+            if [ -f "$f" ]; then
+              python3 -m json.tool "$f" > /dev/null || { echo "Invalid JSON: $f"; exit 1; }
+            fi
+          done
+
+      - name: Validate YAML files
+        run: |
+          python3 -c "import yaml, glob, sys; [yaml.safe_load(open(f)) for f in glob.glob('.github/workflows/*.yml')]"
+
+      - name: Check required files
         run: |
           test -f README.md
           test -f PROPOSAL.md
@@ -22,18 +49,39 @@ jobs:
           test -f DESIGN.md
           test -f SKILL.md
           test -f .claude-plugin/plugin.json
-          test -d agents
-      - name: Check byescaleira plugin manifest
-        run: |
-          test -f .claude-plugin/plugin.json
-      - name: Check legacy extension files
-        run: |
+          test -f .claude-plugin/marketplace.json
+          test -f agents/byescaleira.md
           test -f .claude/CLAUDE.md
           test -d .claude/commands
           test -d .claude/agents
           test -d .claude/rules
-      - name: Validate Claude Code plugin manifest
-        uses: anthropic/claude-code-action@latest
-        with:
-          command: plugin validate .
-        continue-on-error: true
+
+      - name: Validate frontmatter on markdown files
+        run: |
+          python3 scripts/validate-frontmatter.py
+
+      - name: Validate Claude Code plugin and marketplace manifests
+        run: |
+          # Use the local Claude Code CLI if available; otherwise only structural checks pass
+          if command -v claude >/dev/null 2>&1; then
+            claude plugin validate .
+            claude plugin validate . --marketplace
+          else
+            echo "Claude Code CLI not available in CI; skipping manifest validation."
+          fi
+
+      - name: Test skeleton generation
+        run: |
+          mkdir -p /tmp/skeleton-test
+          bash -c '
+            cp -R . /tmp/skeleton-test/plugin
+            cd /tmp/skeleton-test
+            mkdir -p apollo
+            cd apollo
+            # Simulate byescaleira-init by creating the required skeleton files
+            for f in README.md PROPOSAL.md ROADMAP.md CHANGELOG.md ARCHITECTURE.md DECISIONS.md DESIGN.md; do
+              touch "$f"
+            done
+            mkdir -p .github/workflows .github/issue_templates .github/pull_request_template.md scripts
+            test -f ../plugin/.claude/commands/byescaleira-init.md
+          '

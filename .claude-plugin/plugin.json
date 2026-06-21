@@ -1,13 +1,24 @@
 {
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "byescaleira",
-  "version": "0.2.1",
-  "description": "Personal operating system plugin for Rafael Escaleira — space-themed codenames, universal repo template, branding, and engineering rituals.",
+  "version": "0.3.0",
+  "description": "Personal operating system plugin for Rafael Escaleira — space-themed codenames, universal repo template, branding, engineering rituals, and MCP tools.",
   "author": {
     "name": "Rafael Escaleira",
     "email": "rafael@byescaleira.com"
   },
   "skills": [
     "./"
-  ]
+  ],
+  "agents": [
+    "agents/byescaleira.md"
+  ],
+  "mcpServers": {
+    "byescaleira": {
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/byescaleira-mcp.py"
+      ]
+    }
+  }
 }

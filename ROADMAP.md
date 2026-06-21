@@ -21,12 +21,12 @@
 ## Next (next cycle)
 
 - [ ] Strengthen CI validation (frontmatter, shellcheck, markdown lint)
+- [ ] Add MCP server for project scaffolding
 - [ ] Add GitHub repository template
 - [ ] Add sample project using the plugin
 
 ## Maybe
 
-- [ ] MCP server for project scaffolding
 - [ ] CLI tool `byescaleira` for terminal usage outside Claude Code
 - [ ] Automated weekly review prompt
 - [ ] Integration with Apple Notes / Reminders for project tracking
